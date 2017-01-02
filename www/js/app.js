@@ -31,10 +31,34 @@ angular.module('fundacaoApp', ['ionic','fundacaoApp.controllerIndex', 'fundacaoA
 .config(function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-  .state('mapa', {
-    url: '/',
-    templateUrl: 'pages/places.html',
-    controller: 'placesCtrl'
+
+  // Menu para página inicial //
+  .state('menuPlaces', {
+    url: '/locais',
+    abstract: true,
+    templateUrl: 'pages/index/menuPlaces.html'
+  })
+
+  .state('menuPlaces.imagens', {
+    cache: false,
+    url: '/imagens',
+    views: {
+      'imagensPlaces': {
+        templateUrl: 'pages/index/placesImagens.html'
+        // ,controller: 'imagensCtrl'
+      }
+    }
+  })
+
+  .state('menuPlaces.mapa', {
+    cache: false,
+    url: '/mapa',
+    views: {
+      'mapaPlaces': {
+        templateUrl: 'pages/index/placesMapa.html'
+        ,controller: 'placesCtrl'
+      }
+    }
   })
 
   // Menu para página da Casa das Artes //
@@ -89,7 +113,7 @@ angular.module('fundacaoApp', ['ionic','fundacaoApp.controllerIndex', 'fundacaoA
     }
   });
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/locais/imagens');
 
 });
 

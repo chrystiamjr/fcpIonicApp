@@ -73,9 +73,19 @@ angular.module('fundacaoApp.controllerArtes', ['ngCordova'])
   }
 })
 
-.controller('contatosArtesCtrl',function($scope, $state) {
+.controller('contatosArtesCtrl',function($scope, $state, $cordovaInAppBrowser) {
 
   $scope.goBack = function() {
     $state.go('mapa');
+  }
+
+  $scope.enviarEmail = function(mail){
+
+    if(mail && mail.assunto && mail.mensagem){
+
+      var dados = "mailto:chrystiamjr@gmail.com?subject="+mail.assunto+"&body="+mail.mensagem;
+
+      $cordovaInAppBrowser.open(dados, '_system');
+    }
   }
 })

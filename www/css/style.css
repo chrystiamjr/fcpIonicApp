@@ -15,3 +15,10 @@
     background: transparent url(../img/map.gif) no-repeat center center !important;
     background-size: 100% !important;
 }
+
+.scroll-content {
+  background: linear-gradient(#4E4E8E, #8D8DD0) no-repeat center fixed;
+}
+p, .adp-directions span, .adp-summary span, .adp-substep, .adp-maneuver, .adp-legal{
+  color: white !important
+}

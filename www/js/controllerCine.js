@@ -1,12 +1,12 @@
-angular.module('fundacaoApp.controllerArtes', ['ngCordova'])
+angular.module('fundacaoApp.controllerCine', ['ngCordova'])
 
-.controller('infoArtesCtrl',function($scope, $state) {
+.controller('infoCineCtrl',function($scope, $state) {
   $scope.goBack = function() {
     $state.go('menuPlaces.mapa');
   }
 })
 
-.controller('direcoesArtesCtrl', function($scope,$state,$cordovaGeolocation,$ionicHistory){
+.controller('direcoesCineCtrl', function($scope,$state,$cordovaGeolocation,$ionicHistory){
   $scope.goBack = function() {
     $state.go('menuPlaces.mapa');
   }
@@ -25,7 +25,7 @@ angular.module('fundacaoApp.controllerArtes', ['ngCordova'])
     $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
       // user & target position
       var originlatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-      targetlatLng = new google.maps.LatLng(-1.453135, -48.481053);
+      targetlatLng = new google.maps.LatLng(-1.456579, -48.486339);
 
       var mapOptions = {
       zoom: 10,
@@ -66,14 +66,14 @@ angular.module('fundacaoApp.controllerArtes', ['ngCordova'])
   mapaArtes();
 })
 
-.controller('programacaoArtesCtrl',function($scope, $state) {
+.controller('programacaoCineCtrl',function($scope, $state) {
 
   $scope.goBack = function() {
     $state.go('menuPlaces.mapa');
   }
 })
 
-.controller('contatosArtesCtrl',function($scope, $state, $cordovaInAppBrowser) {
+.controller('contatosCineCtrl',function($scope, $state, $cordovaInAppBrowser) {
 
   $scope.goBack = function() {
     $state.go('menuPlaces.mapa');

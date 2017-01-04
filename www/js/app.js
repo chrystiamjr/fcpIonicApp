@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('fundacaoApp', ['ionic','fundacaoApp.controllerIndex', 'fundacaoApp.controllerArtes'])
+angular.module('fundacaoApp', ['ionic','fundacaoApp.controllerIndex', 'fundacaoApp.controllerArtes', 'fundacaoApp.controllerCine'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -111,7 +111,61 @@ angular.module('fundacaoApp', ['ionic','fundacaoApp.controllerIndex', 'fundacaoA
         ,controller: 'contatosArtesCtrl'
       }
     }
-  });
+  })
+  
+  // Menu para página do Cine-Teatro Líbero Luxardo //
+  .state('menuCine', {
+    cache: false,
+    url: '/cine',
+    abstract: true,
+    templateUrl: 'pages/cineLibero/menuCine.html'
+  })
+
+  .state('menuCine.informacoes', {
+    cache: false,
+    url: '/informacoes',
+    views: {
+      'informacoesCine': {
+        templateUrl: 'pages/cineLibero/informacoes.html'
+        ,controller: 'infoCineCtrl'
+      }
+    }
+  })
+
+  .state('menuCine.direcoes', {
+    cache: false,
+    url: '/direcoes',
+    views: {
+      'direcoesCine': {
+        templateUrl: 'pages/cineLibero/direcoes.html'
+        ,controller: 'direcoesCineCtrl'
+      }
+    }
+  })
+
+  .state('menuCine.programacao', {
+    cache: false,
+    url: '/programacao',
+    views: {
+      'programacaoCine': {
+        templateUrl: 'pages/cineLibero/programacao.html'
+        ,controller: 'programacaoCineCtrl'
+      }
+    }
+  })
+
+  .state('menuCine.contatos', {
+    cache: false,
+    url: '/contatos',
+    views: {
+      'contatosCine': {
+        templateUrl: 'pages/cineLibero/contatos.html'
+        ,controller: 'contatosCineCtrl'
+      }
+    }
+  })
+  
+  ;
 
   $urlRouterProvider.otherwise('/locais/imagens');
 

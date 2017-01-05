@@ -11,7 +11,7 @@ angular.module('fundacaoApp.controllerCine', ['ngCordova'])
     $state.go('menuPlaces.mapa');
   }
 
-  var mapaArtes = function(){
+  var mapaCine = function(){
     var targetlatLng = null;
     var options = {
       timeout: 30000,
@@ -25,6 +25,7 @@ angular.module('fundacaoApp.controllerCine', ['ngCordova'])
     $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
       // user & target position
       var originlatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      alert(originlatLng);
       targetlatLng = new google.maps.LatLng(-1.456579, -48.486339);
 
       var mapOptions = {
@@ -38,7 +39,7 @@ angular.module('fundacaoApp.controllerCine', ['ngCordova'])
     };
 
     // instantiate a map object
-    $scope.map = new google.maps.Map(document.getElementById("mapArtes"), mapOptions);
+    $scope.map = new google.maps.Map(document.getElementById("mapCine"), mapOptions);
 
       var calcRoute = (function () {
         var request = {
@@ -56,14 +57,14 @@ angular.module('fundacaoApp.controllerCine', ['ngCordova'])
       })();
       google.maps.event.addListenerOnce($scope.map, 'idle', function () {
         directionsDisplay.setMap($scope.map);
-        $scope.directions = directionsDisplay.setPanel(document.getElementById("directionsArtes")); // Mostra direções no id directions
+        $scope.directions = directionsDisplay.setPanel(document.getElementById("directionsCine")); // Mostra direções no id directions
       })
 
       // wait until the map is loaded
       // $scope.directions = directionsDisplay.setPanel(document.getElementById("directionsArtes"));
     });
   }
-  mapaArtes();
+  mapaCine();
 })
 
 .controller('programacaoCineCtrl',function($scope, $state) {

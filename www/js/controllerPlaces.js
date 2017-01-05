@@ -9,10 +9,10 @@ angular.module('fundacaoApp.controllerIndex', ['ngCordova'])
       timeout: 30000,
       enableHighAccuracy: false
     };
-
+    
     $cordovaGeolocation.getCurrentPosition(options).then(function(position){
       var staticPosition = new google.maps.LatLng(-1.430311, -48.491162);
-      // alert(myLatLng);
+      // alert(staticPosition);
 
       var mapOptions = {
         zoom: 13,

@@ -22,6 +22,11 @@ angular.module('fundacaoApp', ['ionic','fundacaoApp.controllerIndex', 'fundacaoA
       StatusBar.styleDefault();
     }
   });
+  
+  // Desabilita o botão físico do telefone.
+  $ionicPlatform.registerBackButtonAction(function(){
+    event.preventDefault();
+  }, 100);
 })
 
 .config(function($ionicConfigProvider) {

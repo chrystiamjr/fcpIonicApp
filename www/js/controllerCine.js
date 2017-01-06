@@ -2,13 +2,13 @@ angular.module('fundacaoApp.controllerCine', ['ngCordova'])
 
 .controller('infoCineCtrl',function($scope, $state) {
   $scope.goBack = function() {
-    $state.go('menuPlaces.mapa');
+    $state.go('menuPlaces.imagens');
   }
 })
 
 .controller('direcoesCineCtrl', function($scope,$state,$cordovaGeolocation,$ionicHistory){
   $scope.goBack = function() {
-    $state.go('menuPlaces.mapa');
+    $state.go('menuPlaces.imagens');
   }
 
   var mapaCine = function(){
@@ -25,7 +25,6 @@ angular.module('fundacaoApp.controllerCine', ['ngCordova'])
     $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
       // user & target position
       var originlatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-      alert(originlatLng);
       targetlatLng = new google.maps.LatLng(-1.456579, -48.486339);
 
       var mapOptions = {
@@ -70,14 +69,14 @@ angular.module('fundacaoApp.controllerCine', ['ngCordova'])
 .controller('programacaoCineCtrl',function($scope, $state) {
 
   $scope.goBack = function() {
-    $state.go('menuPlaces.mapa');
+    $state.go('menuPlaces.imagens');
   }
 })
 
 .controller('contatosCineCtrl',function($scope, $state, $cordovaInAppBrowser) {
 
   $scope.goBack = function() {
-    $state.go('menuPlaces.mapa');
+    $state.go('menuPlaces.imagens');
   }
 
   $scope.enviarEmail = function(mail){

@@ -2,13 +2,13 @@ angular.module('fundacaoApp.controllerArtes', ['ngCordova'])
 
 .controller('infoArtesCtrl',function($scope, $state) {
   $scope.goBack = function() {
-    $state.go('menuPlaces.mapa');
+    $state.go('menuPlaces.imagens');
   }
 })
 
 .controller('direcoesArtesCtrl', function($scope,$state,$cordovaGeolocation,$ionicHistory){
   $scope.goBack = function() {
-    $state.go('menuPlaces.mapa');
+    $state.go('menuPlaces.imagens');
   }
 
   var mapaArtes = function(){
@@ -69,14 +69,14 @@ angular.module('fundacaoApp.controllerArtes', ['ngCordova'])
 .controller('programacaoArtesCtrl',function($scope, $state) {
 
   $scope.goBack = function() {
-    $state.go('menuPlaces.mapa');
+    $state.go('menuPlaces.imagens');
   }
 })
 
 .controller('contatosArtesCtrl',function($scope, $state, $cordovaInAppBrowser) {
 
   $scope.goBack = function() {
-    $state.go('menuPlaces.mapa');
+    $state.go('menuPlaces.imagens');
   }
 
   $scope.enviarEmail = function(mail){

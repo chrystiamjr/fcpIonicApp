@@ -3,7 +3,7 @@
   <!-- Botao esquerdo -->
   <ion-nav-buttons side="left">
     <button class="button" ng-click="goBack()">
-      <span class="ion-arrow-left-c"> Inicio</span>
+      <i class="ion-home" style="font-size: 30px;"></i>
     </button>
   </ion-nav-buttons>
 
@@ -33,7 +33,7 @@
           <span class="input-label">Mensagem:</span>
           <textarea type="text" ng-model="mail.mensagem" placeholder="Insira aqui sua mensagem" rows="7"></textarea>
         </label>
-        <button type="submit" ng-click="enviarEmail(mail)" class="button button-balanced button-full">Enviar</button>
+        <button type="submit" ng-click="enviarEmail(mail)" class="button button-raised button-positive button-full ink">Enviar</button>
       </div>
     </div>
 

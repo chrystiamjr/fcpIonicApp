@@ -1,7 +1,7 @@
 {
-  "name": "foundapp",
+  "name": "fundacaoapp",
   "version": "1.1.1",
-  "description": "FoundApp: An Ionic project",
+  "description": "fundacaoApp: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
@@ -16,12 +16,11 @@
   },
   "cordovaPlugins": [
     "cordova-plugin-whitelist",
-    "cordova-plugin-console",
     "cordova-plugin-statusbar",
-    "cordova-plugin-device",
+    "cordova-plugin-console",
     "cordova-plugin-splashscreen",
-    "ionic-plugin-keyboard",
-    "cordova-plugin-geolocation"
+    "cordova-plugin-device",
+    "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": []
 }

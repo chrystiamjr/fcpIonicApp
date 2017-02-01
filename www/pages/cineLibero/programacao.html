@@ -1,7 +1,7 @@
 <ion-view view-title="Cine-Teatro Líbero Luxardo">
 
   <!-- Botao esquerdo -->
-  <ion-nav-buttons side="left">
+  <ion-nav-buttons side="right">
     <button class="button" ng-click="goBack()">
       <i class="ion-home" style="font-size: 30px;"></i>
     </button>
@@ -11,31 +11,42 @@
     <h2 class="title">Programação</h2>
   </div>
 
+
+    <div class="mydiv" ng-show="loading">
+      <div class="ajax-loader" style="text-align:center">
+        <img src="img/ajax-loader.gif" />
+        <br />
+        Loading
+      </div>
+    </div>
+
   <ion-content class="padding has-subheader">
-    <div class = "list">
+    <div class = "list" ng-repeat="cine in dadosCine">
 
-      <a href="#" style="text-decoration: none">
+      <a href="#/details/{{cine.id_evento}}" style="text-decoration: none">
         <div class="list card">
-          <div class="item item-divider">
-            Conteudo do header
+          <div class="item item-divider" style="border-bottom: 1px solid #d2d2d2;">
+            Evento: {{cine.nome}}
           </div>
           <div class="item item-text-wrap">
-            Conteudo do body
-          </div>
-        </div>
-      </a>
-
-      <a href="#" style="text-decoration: none">
-        <div class="list card">
-          <div class="item item-divider">
-            Conteudo do header
-          </div>
-          <div class="item item-text-wrap">
-            Conteudo do body
+            Horário: {{cine.horario}} <br />
+            Valor: R${{cine.preco}}
           </div>
         </div>
       </a>
 
     </div>
+
+    <div class="list card" ng-show="noContent">
+      <div class="item item-text-wrap" style="text-align:center;background-color:red;opacity:.83;">
+        <h3 style="color:white">
+          <i class="ion-alert-circled"></i>
+          Não existem eventos cadastrados
+          <br />
+          para esse mês
+        </h3>
+      </div>
+    </div>
+
   </ion-content>
 </ion-view>

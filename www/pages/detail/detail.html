@@ -1,0 +1,41 @@
+<ion-view view-title="Cine-Teatro Líbero Luxardo">
+
+  <!-- Botao esquerdo -->
+  <ion-nav-buttons side="left">
+    <button class="button" ng-click="goBack()">
+      <i class="ion-chevron-left" style="font-size: 30px;"></i>
+    </button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button" ng-click="goHome()">
+      <i class="ion-home" style="font-size: 30px;"></i>
+    </button>
+  </ion-nav-buttons>
+
+  <div class="bar bar-dark bar-subheader">
+    <h2 class="title">Programação</h2>
+  </div>
+
+  <ion-content class="has-subheader">
+    <div class="list">
+      <div class="card">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Evento:</span>
+          <input type="text" value="{{dados.nome}}" readonly>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Descrição:</span>
+          <textarea type="text" rows="*" readonly>{{dados.descricao}}</textarea>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Horário:</span>
+          <input type="text" value="{{dados.horario}}" readonly>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Preço:</span>
+          <input type="text" value="R$ {{dados.preco}}" readonly>
+        </label>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

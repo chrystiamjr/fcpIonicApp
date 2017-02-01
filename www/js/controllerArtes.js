@@ -66,11 +66,28 @@ angular.module('fundacaoApp.controllerArtes', ['ngCordova'])
   mapaArtes();
 })
 
-.controller('programacaoArtesCtrl',function($scope, $state) {
+.controller('programacaoArtesCtrl',function($scope, $state, EventoService, $timeout) {
+
+  $scope.noContent = false;
+  $scope.loading = true;
 
   $scope.goBack = function() {
     $state.go('menuPlaces.imagens');
   }
+
+  EventoService.getEventosArtes().then(function(resp){
+    // console.log(resp);
+    if(resp.data){
+      $scope.dadosArtes = resp.data;
+      // console.log($scope.dadosCine);
+      $scope.loading = false;
+      $scope.noContent = false;
+    } else{
+      $scope.noContent = true;
+      $scope.loading = false;
+    }
+  });
+
 })
 
 .controller('contatosArtesCtrl',function($scope, $state, $cordovaInAppBrowser) {

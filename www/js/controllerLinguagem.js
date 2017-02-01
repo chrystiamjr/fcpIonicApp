@@ -1,17 +1,17 @@
-angular.module('fundacaoApp.controllerCine', ['ngCordova'])
+angular.module('fundacaoApp.controllerLinguagem', ['ngCordova'])
 
-.controller('infoCineCtrl',function($scope, $state) {
+.controller('infoLinguagemCtrl',function($scope, $state) {
   $scope.goBack = function() {
     $state.go('menuPlaces.imagens');
   }
 })
 
-.controller('direcoesCineCtrl', function($scope,$state,$cordovaGeolocation,$ionicHistory){
+.controller('direcoesLinguagemCtrl', function($scope,$state,$cordovaGeolocation,$ionicHistory){
   $scope.goBack = function() {
     $state.go('menuPlaces.imagens');
   }
 
-  var mapaCine = function(){
+  var mapaLinguagem = function(){
     var targetlatLng = null;
     var options = {
       timeout: 30000,
@@ -25,7 +25,7 @@ angular.module('fundacaoApp.controllerCine', ['ngCordova'])
     $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
       // user & target position
       var originlatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-      targetlatLng = new google.maps.LatLng(-1.456579, -48.486339);
+      targetlatLng = new google.maps.LatLng(-1.453786, -48.49243);
 
       var mapOptions = {
       zoom: 10,
@@ -38,7 +38,7 @@ angular.module('fundacaoApp.controllerCine', ['ngCordova'])
     };
 
     // instantiate a map object
-    $scope.map = new google.maps.Map(document.getElementById("mapCine"), mapOptions);
+    $scope.map = new google.maps.Map(document.getElementById("mapLinguagem"), mapOptions);
 
       var calcRoute = (function () {
         var request = {
@@ -56,30 +56,30 @@ angular.module('fundacaoApp.controllerCine', ['ngCordova'])
       })();
       google.maps.event.addListenerOnce($scope.map, 'idle', function () {
         directionsDisplay.setMap($scope.map);
-        $scope.directions = directionsDisplay.setPanel(document.getElementById("directionsCine")); // Mostra direções no id directions
+        $scope.directions = directionsDisplay.setPanel(document.getElementById("directionsLinguagem")); // Mostra direções no id directions
       })
 
       // wait until the map is loaded
       // $scope.directions = directionsDisplay.setPanel(document.getElementById("directionsArtes"));
     });
   }
-  mapaCine();
+  mapaLinguagem();
 })
 
-.controller('programacaoCineCtrl',function($scope, $state, EventoService, $timeout) {
+.controller('programacaoLinguagemCtrl',function($scope, $state, EventoService, $timeout) {
 
-    $scope.noContent = false;
-    $scope.loading = true;
+  $scope.noContent = false;
+  $scope.loading = true;
 
-    $scope.goBack = function() {
-      $state.go('menuPlaces.imagens');
-    }
+  $scope.goBack = function() {
+    $state.go('menuPlaces.imagens');
+  }
 
-    EventoService.getEventosCine().then(function(resp){
-      // console.log(resp);
-      if(resp.data){
-      $scope.dadosCine = resp.data;
-      console.log($scope.dadosCine);
+  EventoService.getEventosLinguagem().then(function(resp){
+    // console.log(resp);
+    if(resp.data){
+      $scope.dadosLinguagem = resp.data;
+      // console.log($scope.dadosCine);
       $scope.loading = false;
       $scope.noContent = false;
     } else{
@@ -90,7 +90,7 @@ angular.module('fundacaoApp.controllerCine', ['ngCordova'])
 
 })
 
-.controller('contatosCineCtrl',function($scope, $state, $cordovaInAppBrowser) {
+.controller('contatosLinguagemCtrl',function($scope, $state, $cordovaInAppBrowser) {
 
   $scope.goBack = function() {
     $state.go('menuPlaces.imagens');

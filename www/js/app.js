@@ -1,4 +1,9 @@
-angular.module('fundacaoApp', ['ionic','ionic-material','fundacaoApp.controllerIndex','fundacaoApp.controllerArtes','fundacaoApp.controllerCine'])
+angular.module('fundacaoApp', ['ionic','ionic-material',
+'fundacaoApp.controllerIndex',
+'fundacaoApp.controllerArtes',
+'fundacaoApp.controllerLinguagem',
+'fundacaoApp.controllerCine',
+'fundacaoApp.controllerDetails'])
 
 .run(function($ionicPlatform, ionicMaterialInk) {
   $ionicPlatform.ready(function() {
@@ -13,7 +18,8 @@ angular.module('fundacaoApp', ['ionic','ionic-material','fundacaoApp.controllerI
       StatusBar.styleDefault();
     }
   });
-  
+
+
   // Desabilita o botão físico do telefone.
   $ionicPlatform.registerBackButtonAction(function(){
     event.preventDefault();
@@ -28,7 +34,14 @@ angular.module('fundacaoApp', ['ionic','ionic-material','fundacaoApp.controllerI
 
   $stateProvider
 
-  // Menu para página inicial //
+  // // Menu para página inicial //
+  .state('details',{
+    url: '/details/:id',
+    cache: false,
+    templateUrl: 'pages/detail/detail.html',
+    controller: 'detailsCtrl'
+  })
+
   .state('menuPlaces', {
     url: '/locais',
     abstract: true,
@@ -108,7 +121,59 @@ angular.module('fundacaoApp', ['ionic','ionic-material','fundacaoApp.controllerI
       }
     }
   })
-  
+
+  // Menu para página da Casa da Linguagem //
+  .state('menuLinguagem', {
+    cache: false,
+    url: '/linguagem',
+    abstract: true,
+    templateUrl: 'pages/casaLinguagem/menuLinguagem.html'
+  })
+
+  .state('menuLinguagem.informacoes', {
+    cache: false,
+    url: '/informacoes',
+    views: {
+      'informacoesLinguagem': {
+        templateUrl: 'pages/casaLinguagem/informacoes.html'
+        ,controller: 'infoLinguagemCtrl'
+      }
+    }
+  })
+
+  .state('menuLinguagem.direcoes', {
+    cache: false,
+    url: '/direcoes',
+    views: {
+      'direcoesLinguagem': {
+        templateUrl: 'pages/casaLinguagem/direcoes.html'
+        ,controller: 'direcoesLinguagemCtrl'
+      }
+    }
+  })
+
+  .state('menuLinguagem.programacao', {
+    cache: false,
+    url: '/programacao',
+    views: {
+      'programacaoLinguagem': {
+        templateUrl: 'pages/casaLinguagem/programacao.html'
+        ,controller: 'programacaoLinguagemCtrl'
+      }
+    }
+  })
+
+  .state('menuLinguagem.contatos', {
+    cache: false,
+    url: '/contatos',
+    views: {
+      'contatosLinguagem': {
+        templateUrl: 'pages/casaLinguagem/contatos.html'
+        ,controller: 'contatosLinguagemCtrl'
+      }
+    }
+  })
+
   // Menu para página do Cine-Teatro Líbero Luxardo //
   .state('menuCine', {
     cache: false,
@@ -160,26 +225,69 @@ angular.module('fundacaoApp', ['ionic','ionic-material','fundacaoApp.controllerI
       }
     }
   })
-  
+
   ;
 
   $urlRouterProvider.otherwise('/locais/imagens');
 
+})
+
+.factory('EventoService',function($http){
+  var evento = []; //Private Variable
+  var url = "http://www.technikservicos.esy.es/FCP/api/";
+
+  return {
+    getEventosCine: function(){
+      return $http.get(url+"getEventosCine.php")
+      .then(function(response){
+        if(response){
+          evento = response.data;
+          return response;
+        }else{
+          return false;
+        }
+      });
+    },
+    getEventosArtes: function(){
+      return $http.get(url+"getEventosArtes.php")
+      .then(function(response){
+        if(response){
+          evento = response.data;
+          return response;
+        }else{
+          return false;
+        }
+      });
+    },
+    getEventosLinguagem: function(){
+      return $http.get(url+"getEventosLinguagem.php")
+      .then(function(response){
+        if(response){
+          evento = response.data;
+          return response;
+        }else{
+          return false;
+        }
+      });
+    },
+    getEvento: function(eventoId){
+      for(i=0;i<evento.length;i++){
+        // return console.log(evento[i]);
+        if(evento[i].id_evento == eventoId){
+          return evento[i];
+        }
+      }
+    }
+  }
 });
 
 var places =
 [
   {
-    place : 'Fundação Cultural do Pará Tancredo Neves',
-    link : '#',
+    place : 'Cine-Teatro Líbero Luxardo',
+    link : '#/cine/informacoes',
     lat : -1.456579,
     long : -48.486339
-  },
-  {
-    place : 'Núcleo de Oficinas Curro Velho',
-    link : '#',
-    lat : -1.430311,
-    long : -48.491162
   },
   {
     place : 'Casa das Artes',
@@ -189,14 +297,8 @@ var places =
   },
   {
     place : 'Casa da Linguagem',
-    link : '#',
+    link : '#/linguagem/informacoes',
     lat : -1.453786,
     long : -48.49243
-  },
-  {
-    place : 'Teatro Experimental Waldemar Henrique',
-    link : '#',
-    lat : -1.452658,
-    long : -48.49497
   }
 ];

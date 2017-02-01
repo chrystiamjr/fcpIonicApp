@@ -1,0 +1,52 @@
+@media screen and (min-width:500px) {
+  /* Empty. Add your own CSS if you like */
+  .scroll {
+    height: 100%;
+  }
+  #map {
+    width: 100%;
+    height: 100%;
+    background: transparent url(../img/gps.svg) no-repeat center center !important;
+    background-size: 50% !important;
+  }
+  #mapArtes {
+    width: 100%;
+    height: 100%;
+    background: transparent url(../img/gps.svg) no-repeat center center !important;
+    background-size: 50% !important;
+  }
+  #mapLinguagem {
+    width: 100%;
+    height: 100%;
+    background: transparent url(../img/gps.svg) no-repeat center center !important;
+    background-size: 50% !important;
+  }
+  #mapCine {
+    width: 100%;
+    height: 100%;
+    background: transparent url(../img/gps.svg) no-repeat center center !important;
+    background-size: 50% !important;
+  }
+  ion-content {
+    background: linear-gradient(#4E4E8E, #8D8DD0) no-repeat center fixed;
+  }
+  p, .adp-directions span, .adp-summary span, .adp-substep, .adp-maneuver, .adp-legal{
+    color: white !important
+  }
+  .logo{
+    background: transparent url('../img/logo-fcp.png') no-repeat center center;
+    height: 100%;
+    background-size: 35%;
+  }
+  .logo-div{
+    height: 20%
+  }
+  .list.card{
+    margin-bottom: 15px !important;
+  }
+  .imgRound{
+    width: 100%;
+    height:200px;
+    border-radius: 15px
+  }
+}

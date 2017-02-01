@@ -1,4 +1,4 @@
-<ion-view view-title="Casa das Artes">
+<ion-view view-title="Casa da Linguagem">
 
   <!-- Botao esquerdo -->
   <ion-nav-buttons side="right">
@@ -20,16 +20,16 @@
   </div>
 
   <ion-content class="padding has-subheader">
-  <div class = "list" ng-repeat="artes in dadosArtes">
+  <div class = "list" ng-repeat="linguagem in dadosLinguagem">
 
-    <a href="#/details/{{artes.id_evento}}" style="text-decoration: none">
+    <a href="#/details/{{linguagem.id_evento}}" style="text-decoration: none">
       <div class="list card">
         <div class="item item-divider" style="border-bottom: 1px solid #d2d2d2;">
-          Evento: {{artes.nome}}
+          Evento: {{linguagem.nome}}
         </div>
         <div class="item item-text-wrap">
-          Horário: {{artes.horario}} <br />
-          Valor: R${{artes.preco}}
+          Horário: {{linguagem.horario}} <br />
+          Valor: R${{linguagem.preco}}
         </div>
       </div>
     </a>

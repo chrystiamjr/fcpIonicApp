@@ -7,7 +7,6 @@ angular.module('fundacaoApp', ['ionic','ionic-material',
 
 .run(function($ionicPlatform, ionicMaterialInk) {
   $ionicPlatform.ready(function() {
-
     ionicMaterialInk.displayEffect();
 
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -18,7 +17,6 @@ angular.module('fundacaoApp', ['ionic','ionic-material',
       StatusBar.styleDefault();
     }
   });
-
 
   // Desabilita o botão físico do telefone.
   $ionicPlatform.registerBackButtonAction(function(){
